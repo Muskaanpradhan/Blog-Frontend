@@ -33,7 +33,7 @@ const App = () => {
         setInfo(result);
       });
   }
-
+    // deplloyment
   return (
     <>
       <div className="border-2 border-black bg-[url('https://images.pexels.com/photos/459038/pexels-photo-459038.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1')] bg-cover bg-center h-screen p-8">
@@ -54,6 +54,7 @@ const App = () => {
             Search
           </button>
         </div>
+        
 
         <ul className="flex flex-wrap justify-center gap-6 ">
           {info.map(item => (

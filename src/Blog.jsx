@@ -4,7 +4,7 @@ function Home() {
   const [name, setName] = useState("");
   const [title, setTitle] = useState("");
   const [blogContent, setBlogContent] = useState("");
-  const [image, setImage] = useState("")
+  const [image, setImage] = useState("");
 
   //deploying
 

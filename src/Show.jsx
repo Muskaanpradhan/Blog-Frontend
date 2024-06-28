@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import Message from "./Message";
 import { useNavigate } from "react-router-dom";
 
+//show
+
 function Show() {
   const [data, setData] = useState([]);
   const navigate = useNavigate();

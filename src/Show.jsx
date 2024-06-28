@@ -8,7 +8,7 @@ function Show() {
 
   useEffect(() => {
     async function fetchData() {
-      const response = await fetch("http://localhost:5000/showData");
+      const response = await fetch("https://blog-backend-a2cl.onrender.com/showData");
       const result = await response.json();
       setData(result);
     }
@@ -16,7 +16,7 @@ function Show() {
   }, []);
 
   function handleDelete(e, id) {
-    fetch("http://localhost:5000/deleteData", {
+    fetch("https://blog-backend-a2cl.onrender.com/deleteData", {
       method: "DELETE",
       headers: {
         "content-type": "application/json",

@@ -10,7 +10,7 @@ function Home() {
     const obj = { name, title, blogContent };
 
     e.preventDefault();
-    fetch("http://localhost:5000/sendBlog", {
+    fetch("https://blog-backend-a2cl.onrender.com/sendBlog", {
       method: "POST",
       headers: {
         "content-type": "application/json",

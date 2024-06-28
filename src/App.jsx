@@ -7,7 +7,7 @@ const App = () => {
   //DEPLOYMENT
 
   useEffect(() => {
-    fetch('http://localhost:5000/Data', {
+    fetch('https://blog-backend-a2cl.onrender.com/Data', {
       method: 'GET',
       headers: {
         'content-type': 'application/json'
@@ -22,7 +22,7 @@ const App = () => {
   }, []);
 
   function handleSearch() {
-    fetch("http://localhost:5000/search?q=" + search, {
+    fetch("https://blog-backend-a2cl.onrender.com/search?q=" + search, {
       method: 'GET',
       headers: {
         "content-type": "application/json",

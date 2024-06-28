@@ -6,6 +6,8 @@ function Home() {
   const [blogContent, setBlogContent] = useState("");
   const [image, setImage] = useState("")
 
+  //deploying
+
   const formData=new FormData()
 
 formData.append("name",name)

@@ -4,6 +4,8 @@ const App = () => {
   const [info, setInfo] = useState([]);
   const [search, setSearch] = useState("");
 
+  //DEPLOYMENT
+
   useEffect(() => {
     fetch('http://localhost:5000/Data', {
       method: 'GET',

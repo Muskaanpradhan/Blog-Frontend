@@ -1,20 +1,18 @@
-import { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import React, { useState } from "react";
 
-function Edit() {
-  const { idToEdit } = useParams();
+function AddMessages() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
-  const navigate = useNavigate();
+  const [response, setResponse] = useState(false);
 
   function handleSubmit(e) {
     e.preventDefault();
 
-    const obj = { name, email, message, id: idToEdit };
+    const obj = { name, email, message };
 
-    fetch("https://blog-backend-a2cl.onrender.com/updateData", {
-      method: "PUT",
+    fetch("https://blog-backend-a2cl.onrender.com/saveData", {
+      method: "POST",
       headers: {
         "content-type": "application/json",
       },
@@ -22,29 +20,23 @@ function Edit() {
     })
       .then((response) => response.json())
       .then((result) => {
-        if (result === "Data Updated") {
-          navigate("/show");
+        if (result === "Data Submitted") {
+          setResponse(true);
+
+          // Clearing the form
+          setName("");
+          setEmail("");
+          setMessage("");
         }
       });
   }
 
-  useEffect(() => {
-    if (idToEdit) {
-      fetch("https://blog-backend-a2cl.onrender.com/getDataById/" + idToEdit)
-        .then((response) => response.json())
-        .then((result) => {
-          setName(result.name);
-          setEmail(result.email);
-          setMessage(result.message);
-        });
-    }
-  }, [idToEdit]);
-
   return (
     <div className="bg-[url('https://images.pexels.com/photos/459038/pexels-photo-459038.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1')] bg-cover bg-center h-screen flex items-center justify-center">
       <main className="backdrop-blur-lg bg-white bg-opacity-10 p-8 rounded-md shadow-2xl max-w-lg w-full">
-        <h2 className="text-4xl font-bold mb-8 text-center text-white">Edit Message</h2>
-        
+        {response && <h3 className="text-white text-center mb-4">Thank you for your message</h3>}
+        <h2 className="text-4xl font-bold mb-8 text-center text-white">Send a Message</h2>
+
         <form className="space-y-4" onSubmit={handleSubmit} method="post">
           <input
             className="px-4 py-3 rounded-md w-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
@@ -73,7 +65,7 @@ function Edit() {
             type="submit"
             className="bg-black text-white px-4 py-2 rounded-lg hover:bg-gray-800 w-full"
           >
-            Update Message
+            Send Message
           </button>
         </form>
       </main>
@@ -81,4 +73,4 @@ function Edit() {
   );
 }
 
-export default Edit;
+export default AddMessages;

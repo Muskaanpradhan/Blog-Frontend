@@ -23,6 +23,16 @@ function Header() {
                 AddBlog
               </Link>
             </li>
+
+            <li>
+              <Link 
+                to="/message" 
+                className="bg-white text-blue-600 px-4 py-2 rounded-md hover:bg-blue-500 hover:text-white"
+              >
+                AddMessage
+              </Link>
+              </li>
+
             <li>
               <Link 
                 to="/show" 

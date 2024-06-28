@@ -4,18 +4,28 @@ function Home() {
   const [name, setName] = useState("");
   const [title, setTitle] = useState("");
   const [blogContent, setBlogContent] = useState("");
-  const [file, setFile] = useState("")
+  const [image, setImage] = useState("")
+
+  const formData=new FormData()
+
+formData.append("name",name)
+formData.append("title",title)
+formData.append("blogContent",blogContent)
+formData.append("image",image)
+
+
+
 
   function handleSubmit(e) {
-    const obj = { name, title, blogContent };
+    // const obj = { name, title, blogContent };
 
     e.preventDefault();
     fetch("https://blog-backend-a2cl.onrender.com/sendBlog", {
       method: "POST",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(obj),
+      // headers: {
+      //   "content-type": "application/json",
+      // },
+      body: formData,
     })
       .then((response) => response.json())
       .then((result) => {
@@ -29,6 +39,8 @@ function Home() {
         className=" backdrop-blur-lg bg-white bg-opacity-10 p-8 rounded-md shadow-2xl    max-w-lg w-full"
         onSubmit={handleSubmit}
         method="post"
+        encType="multipart/form-data"
+
       >
         <h1 className="text-4xl font-bold mb-8 text-center">Submit Your Blog</h1>
         
@@ -55,7 +67,7 @@ function Home() {
           placeholder="Enter your blog content"
           onChange={(e) => setBlogContent(e.target.value)}
         /><br/>
-        <input type="file" onChange={(e) => setFile(e.target.files(0))} ></input>
+        <input type="file" name="image" onChange={(e) => setImage(e.target.files[0])} ></input>
 
         <button
           className="btn-primary"

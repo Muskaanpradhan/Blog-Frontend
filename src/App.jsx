@@ -57,7 +57,7 @@ const App = () => {
 
         <ul className="flex flex-wrap justify-center gap-6 ">
           {info.map(item => (
-            <li className="border-2 border-black rounded-lg bg-slate-100 p-4 shadow-2xl border border-gray-200 h-64 w-80" key={item._id}>
+            <li className="border-2 border-black rounded-lg bg-slate-100 p-4 shadow-2xl border border-gray-200 h-auto w-80" key={item._id}>
               <img className="h-[96]" src={`https://blog-backend-a2cl.onrender.com/${item.image}`} alt="image"></img>
                             <p className="font-medium text-lg">Author Name: <span className="font-bold">{item.name}</span></p>
               <p className="font-medium text-lg">Title: <span className="font-bold">{item.title}</span></p>
